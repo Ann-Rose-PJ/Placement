@@ -82,49 +82,92 @@
 
 ####--------------------prime---------------------
 
-z=int(input())
-
-flag=0
-for i in range(2,int(z**.5)+1):
-    if z%i==0:
-        flag=1
-        break
-if flag==0:
-    print("Prime")
-else:
-    print("Composite")
-
-
-
-####-------------------Duplicate value-------------------
-# l=list(map(int,input().split()))
-# l2=[]
-# for i in l:
-#     if i not in l2:
-#         l2.append(i)
-# print(l2)
+# z=int(input())
+#
+# flag=0
+# for i in range(2,int(z**.5)+1):
+#     if z%i==0:
+#         flag=1
+#         break
+# if flag==0:
+#     print("Prime")
+# else:
+#     print("Composite")
+#
+#
+#
+# ####-------------------Duplicate value-------------------
+# # l=list(map(int,input().split()))
+# # l2=[]
+# # for i in l:
+# #     if i not in l2:
+# #         l2.append(i)
+# # print(l2)
+# #
+#
+#
+# ##############------------------Odd num of times occured-------------------
+#
+# # l=list(map(int,input().split()))
+# # l2=[]
+# # for i in l:
+# #     if i not in l2 and l.count(i)%2!=0:
+# #         l2.append(i)
+# # print(l2)
+#
+# ##--------------------------Sort and put even odd--------------
+#
+# # l2=list(map(int,input().split()))
+# # res=[]
+# # l2.sort()
+# # for i in l2:
+# #     if i%2!=0:
+# #         res.append(i)
+# #     else:
+# #         res.insert(0,i)
+# # print(res)
 #
 
 
-##############------------------Odd num of times occured-------------------
+# ####    ---------------police crime-------
 
-# l=list(map(int,input().split()))
-# l2=[]
-# for i in l:
-#     if i not in l2 and l.count(i)%2!=0:
-#         l2.append(i)
-# print(l2)
-
-##--------------------------Sort and put even odd--------------
-
-l2=list(map(int,input().split()))
-res=[]
-l2.sort()
-for i in l2:
-    if i%2!=0:
-        res.append(i)
+eve=int(input())
+lis=list(map(int,input().split()))
+poli=0
+unslv=0
+for i in lis:
+    if i==-1:
+        if poli>0:
+            poli=poli-1
+        else:
+            unslv=unslv+1
     else:
-        res.insert(0,i)
-print(res)
+        poli=poli+i
+print(unslv)
+
+
+#####----------Leetcode-----------------
+class Solution:
+    def lemonadeChange(self, bills: List[int]) -> bool:
+        five,ten=0,0
+        for coin in bills:
+            if coin==5:
+                five=five+1
+            elif coin==10:
+                if five>0:
+                    five=five-1
+                    ten=ten+1
+                else:
+                    return False
+            else:
+                if five>0 and ten>0:
+                    five=five-1
+                    ten=ten-1
+                elif five>=3:
+                    five=five-3
+                else:
+                    return False
+        return True
+
 
 
